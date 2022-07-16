@@ -1,15 +1,15 @@
 import { Flex, Button, Tag, TagLabel, Badge, TagCloseButton } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-/* import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
+import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
 import { connector } from "../../../config/web3";
 import { useCallback, useEffect, useState } from "react";
-import useTruncatedAddress from "../../../hooks/useTruncatedAddress"; */
+/* import useTruncatedAddress from "../../../hooks/useTruncatedAddress"; */
 
 const WalletData = () => {
+
   const [balance, setBalance] = useState(0);
-  const { active, activate, deactivate, account, error, library } =
-    useWeb3React();
+  const { active, activate, deactivate, account, error, library } = useWeb3React();
 
   const isUnsupportedChain = error instanceof UnsupportedChainIdError;
 
@@ -36,14 +36,15 @@ const WalletData = () => {
     if (localStorage.getItem("previouslyConnected") === "true") connect();
   }, [connect]);
 
-  const truncatedAddress = useTruncatedAddress(account);
+  /* const truncatedAddress = useTruncatedAddress(account); */
 
   return (
     <Flex alignItems={"center"}>
       {active ? (
         <Tag colorScheme="green" borderRadius="full">
           <TagLabel>
-            <Link to={`/punks?address=${account}`}>{truncatedAddress}</Link>
+            {/* <Link to={`/punks?address=${account}`}>{truncatedAddress}</Link> */}
+            <Link to="/punks">{account}</Link>
           </TagLabel>
           <Badge
             d={{
