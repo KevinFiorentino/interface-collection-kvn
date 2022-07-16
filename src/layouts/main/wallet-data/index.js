@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
 import { connector } from "../../../config/web3";
 import { useCallback, useEffect, useState } from "react";
-/* import useTruncatedAddress from "../../../hooks/useTruncatedAddress"; */
+import useTruncatedAddress from "../../../hooks/useTruncatedAddress";
 
 const WalletData = () => {
 
@@ -36,15 +36,14 @@ const WalletData = () => {
     if (localStorage.getItem("previouslyConnected") === "true") connect();
   }, [connect]);
 
-  /* const truncatedAddress = useTruncatedAddress(account); */
+  const truncatedAddress = useTruncatedAddress(account);
 
   return (
     <Flex alignItems={"center"}>
       {active ? (
         <Tag colorScheme="green" borderRadius="full">
           <TagLabel>
-            {/* <Link to={`/punks?address=${account}`}>{truncatedAddress}</Link> */}
-            <Link to="/punks">{account}</Link>
+            <Link to={`/punks?address=${account}`}>{truncatedAddress}</Link>
           </TagLabel>
           <Badge
             d={{
