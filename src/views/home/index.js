@@ -2,7 +2,7 @@ import { Stack, Flex, Heading, Text, Button, Image, Badge, useToast } from "@cha
 import { Link } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 import { useCallback, useEffect, useState } from "react";
-import useCollectionKVN from "../../hooks/userCollectionKVN";
+import useCollectionKVN from "../../hooks/useCollectionKVN";
 
 const Home = () => {
 
@@ -159,7 +159,7 @@ const Home = () => {
           >
             Obtén tu punk
           </Button>
-          <Link to="/punks">
+          <Link to="/nfts">
             <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
               Galería
             </Button>

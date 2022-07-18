@@ -10,8 +10,8 @@ const Links = [
     to: "/",
   },
   {
-    name: "Punks",
-    to: "/punks",
+    name: "NFTs",
+    to: "/nfts",
   },
 ];
 
@@ -50,7 +50,7 @@ const MainLayout = ({ children }) => {
             <Flex alignItems="center">
               <Image src="./images/platzi.svg" width="80px" />
               <Heading size="md" color="purple" mt={0.2} ml={1}>
-                Punks
+                KVN
               </Heading>
             </Flex>
             <HStack
