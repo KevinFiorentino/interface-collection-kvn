@@ -24,7 +24,6 @@ const getNFTData = async ({ collectionKVN, tokenId }) => {
     collectionKVN.methods.tokenDNA(tokenId).call(),
     collectionKVN.methods.ownerOf(tokenId).call(),
     collectionKVN.methods.getAccessoriesType(tokenId).call(),
-    collectionKVN.methods.getAccessoriesType(tokenId).call(),
     collectionKVN.methods.getClotheColor(tokenId).call(),
     collectionKVN.methods.getClotheType(tokenId).call(),
     collectionKVN.methods.getEyeType(tokenId).call(),
@@ -79,9 +78,6 @@ const useCollectionKVNsData = () => {
       let tokenIds;
 
       const totalSupply = await collectionKVN.methods.totalSupply().call();
-
-      console.log('totalSupply', totalSupply)
-
       tokenIds = new Array(Number(totalSupply)).fill().map((_, index) => index);
 
       const nftsPromise = tokenIds.map((tokenId) =>

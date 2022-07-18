@@ -3,11 +3,11 @@ import { Grid } from "@chakra-ui/react";
 import NFTCard from "../../components/nft-card";
 import Loading from "../../components/loading";
 import RequestAccess from "../../components/request-access";
-import useCollectionKVN from "../../hooks/useCollectionKVN";
+import { useCollectionKVNsData } from "../../hooks/useCollectionKVNData";
 
 const NFTs = () => {
   const { active } = useWeb3React();
-  const { nfts, loading } = useCollectionKVN();
+  const { nfts, loading } = useCollectionKVNsData();
 
   if (!active) return <RequestAccess />;
 
