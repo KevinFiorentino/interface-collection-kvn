@@ -8,9 +8,38 @@ const Home = () => {
 
   const { active, account } = useWeb3React();
   const [maxSupply, setMaxSupply] = useState();
-  const [imageSrc, setImageSrc] = useState("");
+  const [totalSupply, setTotalSupply] = useState();
+  const [imageSrc, setImageSrc] = useState();
 
   const collectionKVN = useCollectionKVN();
+
+
+  /* ********** Max Supply ********** */
+
+  const getMaxSupply = useCallback(async () => {
+    if (collectionKVN) {
+      const result = await collectionKVN.methods.maxSupply().call();
+      setMaxSupply(result);
+    }
+  }, [collectionKVN]);
+
+  useEffect(() => {
+    getMaxSupply();
+  }, [getMaxSupply]);
+
+
+  /* ********** Total Supply ********** */
+
+  const getTotalSupply = useCallback(async () => {
+    if (collectionKVN) {
+      const result = await collectionKVN.methods.totalSupply().call();
+      setTotalSupply(result);
+    }
+  }, [collectionKVN]);
+
+  useEffect(() => {
+    getTotalSupply();
+  }, [getTotalSupply]);
 
 
   /* ********** Get Preview Image ********** */
@@ -28,23 +57,6 @@ const Home = () => {
     getCollectionKVNData();
   }, [getCollectionKVNData]);
 
-
-
-  /* ********** Max Supply ********** */
-
-  const getMaxSupply = useCallback(async () => {
-    if (collectionKVN) {
-      const result = await collectionKVN.methods.maxSupply().call();
-      setMaxSupply(result);
-    }
-  }, [collectionKVN]);
-
-  useEffect(() => {
-    getMaxSupply();
-  }, [getMaxSupply]);
-
-
-  if (!active) return "Conecta tu wallet.";
 
   return (
     <Stack
@@ -128,7 +140,7 @@ const Home = () => {
               <Badge>
                 Next ID:
                 <Badge ml={1} colorScheme="green">
-                  {maxSupply}
+                  {totalSupply}/{maxSupply}
                 </Badge>
               </Badge>
               <Badge ml={2}>
