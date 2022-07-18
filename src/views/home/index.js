@@ -1,4 +1,4 @@
-import { Stack, Flex, Heading, Text, Button, Image, Badge } from "@chakra-ui/react";
+import { Stack, Flex, Heading, Text, Button, Image, Badge, useToast } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 import { useCallback, useEffect, useState } from "react";
@@ -7,9 +7,13 @@ import useCollectionKVN from "../../hooks/userCollectionKVN";
 const Home = () => {
 
   const { active, account } = useWeb3React();
+  const toast = useToast();
+
   const [maxSupply, setMaxSupply] = useState();
   const [totalSupply, setTotalSupply] = useState();
   const [imageSrc, setImageSrc] = useState();
+
+  const [isMinting, setIsMinting] = useState(false);
 
   const collectionKVN = useCollectionKVN();
 
@@ -56,6 +60,41 @@ const Home = () => {
   useEffect(() => {
     getCollectionKVNData();
   }, [getCollectionKVNData]);
+
+
+  /* ********** Mint NFT ********** */
+
+  const mint = () => {
+    setIsMinting(true);
+
+    collectionKVN.methods.mint().send({
+      from: account
+    })
+    .on('transactionHash', (txHash) => {
+      toast({
+        title: 'Transacción enviada',
+        description: `Hash de la transacción: ${txHash}`,
+        status: 'info'
+      });
+    })
+    .on('receipt', () => {
+      setIsMinting(false);
+      toast({
+        title: 'Transacción confirmada',
+        description: 'La transacción se confirmó con éxito',
+        status: 'success'
+      });
+      getTotalSupply();
+    })
+    .on('error', (error) => {
+      setIsMinting(false);
+      toast({
+        title: 'Error en la transacción',
+        description: error.message,
+        status: 'error'
+      });
+    });
+  };
 
 
   return (
@@ -115,6 +154,8 @@ const Home = () => {
             bg={"green.400"}
             _hover={{ bg: "green.500" }}
             disabled={!collectionKVN}
+            onClick={mint}
+            isLoading={isMinting}
           >
             Obtén tu punk
           </Button>
