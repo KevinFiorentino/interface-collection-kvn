@@ -95,17 +95,32 @@ const useCollectionKVNsData = () => {
     update();
   }, [update]);
 
-  return {
-    loading,
-    nfts,
-    update,
-  };
+  return { loading, nfts, update };
 };
 
 
-// GET NTF
-// const useCollectionKVNData = () => {
+// GET NTF by tokenId
+const useCollectionKVNData = (tokenId = null) => {
+  const [nft, setNFT] = useState();
+  const [loading, setLoading] = useState(true);
+  const collectionKVN = useCollectionKVN();
 
-// }
+  const update = useCallback(async () => {
+    if (collectionKVN && tokenId != null) {
+      setLoading(true);
 
-export { useCollectionKVNsData };
+      const nftToSet = await getNFTData({ collectionKVN, tokenId });
+      setNFT(nftToSet);
+
+      setLoading(false);
+    }
+  }, [collectionKVN, tokenId]);
+
+  useEffect(() => {
+    update();
+  }, [update]);
+
+  return { loading, nft, update };
+}
+
+export { useCollectionKVNsData, useCollectionKVNData };
