@@ -67,33 +67,34 @@ const Home = () => {
   const mint = () => {
     setIsMinting(true);
 
-    collectionKVN.methods.mint().send({
-      from: account
-    })
-    .on('transactionHash', (txHash) => {
-      toast({
-        title: 'Transacción enviada',
-        description: `Hash de la transacción: ${txHash}`,
-        status: 'info'
+    collectionKVN.methods.mint()
+      .send({
+        from: account
+      })
+      .on('transactionHash', (txHash) => {
+        toast({
+          title: 'Transacción enviada',
+          description: `Hash de la transacción: ${txHash}`,
+          status: 'info'
+        });
+      })
+      .on('receipt', () => {
+        setIsMinting(false);
+        toast({
+          title: 'Transacción confirmada',
+          description: 'La transacción se confirmó con éxito',
+          status: 'success'
+        });
+        getTotalSupply();
+      })
+      .on('error', (error) => {
+        setIsMinting(false);
+        toast({
+          title: 'Error en la transacción',
+          description: error.message,
+          status: 'error'
+        });
       });
-    })
-    .on('receipt', () => {
-      setIsMinting(false);
-      toast({
-        title: 'Transacción confirmada',
-        description: 'La transacción se confirmó con éxito',
-        status: 'success'
-      });
-      getTotalSupply();
-    })
-    .on('error', (error) => {
-      setIsMinting(false);
-      toast({
-        title: 'Error en la transacción',
-        description: error.message,
-        status: 'error'
-      });
-    });
   };
 
 

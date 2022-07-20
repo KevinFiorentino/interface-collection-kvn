@@ -71,7 +71,7 @@ const useCollectionKVNsData = () => {
   const [loading, setLoading] = useState(true);
   const collectionKVN = useCollectionKVN();
 
-  const update = useCallback(async () => {
+  const updateNFTs = useCallback(async () => {
     if (collectionKVN) {
       setLoading(true);
 
@@ -92,10 +92,10 @@ const useCollectionKVNsData = () => {
   }, [collectionKVN]);
 
   useEffect(() => {
-    update();
-  }, [update]);
+    updateNFTs();
+  }, [updateNFTs]);
 
-  return { loading, nfts, update };
+  return { loading, nfts, updateNFTs };
 };
 
 
@@ -105,7 +105,7 @@ const useCollectionKVNData = (tokenId = null) => {
   const [loading, setLoading] = useState(true);
   const collectionKVN = useCollectionKVN();
 
-  const update = useCallback(async () => {
+  const updateNFT = useCallback(async () => {
     if (collectionKVN && tokenId != null) {
       setLoading(true);
 
@@ -117,10 +117,10 @@ const useCollectionKVNData = (tokenId = null) => {
   }, [collectionKVN, tokenId]);
 
   useEffect(() => {
-    update();
-  }, [update]);
+    updateNFT();
+  }, [updateNFT]);
 
-  return { loading, nft, update };
+  return { loading, nft, updateNFT };
 }
 
 export { useCollectionKVNsData, useCollectionKVNData };
