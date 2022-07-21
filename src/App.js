@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './views/home';
+import MyNFTs from './views/my-nfts';
 import NFTs from './views/nfts';
 import NFT from './views/nft';
 import MainLayout from "./layouts/main";
@@ -9,6 +10,7 @@ function App() {
     <MainLayout>
       <Routes>
         <Route path="/" exact element={<Home/>} />
+        <Route path="/my-nfts" exact element={<MyNFTs/>} />
         <Route path="/nfts" exact element={<NFTs/>} />
         <Route path="/nfts/:tokenId" exact element={<NFT/>} />
       </Routes>

@@ -10,8 +10,12 @@ const Links = [
     to: "/",
   },
   {
-    name: "NFTs",
+    name: "All NFTs",
     to: "/nfts",
+  },
+  {
+    name: "My NFTs",
+    to: "/my-nfts",
   },
 ];
 

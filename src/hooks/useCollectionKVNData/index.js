@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 import useCollectionKVN from "../useCollectionKVN";
 
 const getNFTData = async ({ collectionKVN, tokenId }) => {
@@ -66,8 +67,9 @@ const getNFTData = async ({ collectionKVN, tokenId }) => {
 };
 
 // GET ALL NFTs
-const useCollectionKVNsData = () => {
+const useCollectionKVNsData = ({ owner = null } = {}) => {
   const [nfts, setNFTs] = useState([]);
+  const { library } = useWeb3React();
   const [loading, setLoading] = useState(true);
   const collectionKVN = useCollectionKVN();
 
@@ -77,8 +79,22 @@ const useCollectionKVNsData = () => {
 
       let tokenIds;
 
-      const totalSupply = await collectionKVN.methods.totalSupply().call();
-      tokenIds = new Array(Number(totalSupply)).fill().map((_, index) => index);
+      if (!library.utils.isAddress(owner)) {
+        const totalSupply = await collectionKVN.methods.totalSupply().call();
+        tokenIds = new Array(Number(totalSupply))
+          .fill()
+          .map((_, index) => index);
+      } else {
+      const balanceOf = await collectionKVN.methods.balanceOf(owner).call();
+
+      const tokenIdsOfOwner = new Array(Number(balanceOf))
+        .fill()
+        .map((_, index) =>
+          collectionKVN.methods.tokenOfOwnerByIndex(owner, index).call()
+        );
+
+        tokenIds = await Promise.all(tokenIdsOfOwner);
+      }
 
       const nftsPromise = tokenIds.map((tokenId) =>
         getNFTData({ tokenId, collectionKVN })
@@ -89,7 +105,49 @@ const useCollectionKVNsData = () => {
       setNFTs(nfts);
       setLoading(false);
     }
-  }, [collectionKVN]);
+  }, [collectionKVN, owner, library?.utils]);
+
+  useEffect(() => {
+    updateNFTs();
+  }, [updateNFTs]);
+
+  return { loading, nfts, updateNFTs };
+};
+
+
+// GET MY NFTs
+const useCollectionKVNsMyData = () => {
+  const [nfts, setNFTs] = useState([]);
+  const { account, /* library */ } = useWeb3React();
+  const [loading, setLoading] = useState(true);
+  const collectionKVN = useCollectionKVN();
+
+  const updateNFTs = useCallback(async () => {
+    if (collectionKVN) {
+      setLoading(true);
+
+      let tokenIds;
+
+      const balanceOf = await collectionKVN.methods.balanceOf(account).call();
+
+      const tokenIdsOfOwner = new Array(Number(balanceOf))
+        .fill()
+        .map((_, index) =>
+          collectionKVN.methods.tokenOfOwnerByIndex(account, index).call()
+        );
+
+      tokenIds = await Promise.all(tokenIdsOfOwner);
+
+      const nftsPromise = tokenIds.map((tokenId) =>
+        getNFTData({ tokenId, collectionKVN })
+      );
+
+      const nfts = await Promise.all(nftsPromise);
+
+      setNFTs(nfts);
+      setLoading(false);
+    }
+  }, [collectionKVN, account, /* library?.utils */]);
 
   useEffect(() => {
     updateNFTs();
@@ -123,4 +181,4 @@ const useCollectionKVNData = (tokenId = null) => {
   return { loading, nft, updateNFT };
 }
 
-export { useCollectionKVNsData, useCollectionKVNData };
+export { useCollectionKVNsData, useCollectionKVNData, useCollectionKVNsMyData };
