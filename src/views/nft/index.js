@@ -19,15 +19,15 @@ const NFT = () => {
   const transfer = () => {
     setTransfering(true);
 
-    const address = prompt("Ingresa la dirección a transferir en NFT: ");
+    const address = prompt("Enter the address to transfer the NFT: ");
 
     const isAddress = library.utils.isAddress(address);
 
     if (!isAddress) {
       setTransfering(false);
       toast({
-        title: 'Error en la transferencia',
-        description: 'La dirección de no válida.',
+        title: 'Transfer error',
+        description: 'Invalid address.',
         status: 'error'
       });
     } else {
@@ -37,16 +37,16 @@ const NFT = () => {
         })
         .on('transactionHash', (txHash) => {
           toast({
-            title: 'Transacción enviada',
-            description: `Hash de la transacción: ${txHash}`,
+            title: 'Transaction sent',
+            description: `Transaction hash: ${txHash}`,
             status: 'info'
           });
         })
         .on('receipt', () => {
           setTransfering(false);
           toast({
-            title: 'Transacción confirmada',
-            description: `El NFT ahora pertenece a ${address}`,
+            title: 'Transaction confirmed',
+            description: `The new owner of NFT is ${address}`,
             status: 'success'
           });
           updateNFT();
@@ -54,7 +54,7 @@ const NFT = () => {
         .on('error', (error) => {
           setTransfering(false);
           toast({
-            title: 'Error en la transacción',
+            title: 'Transaction error',
             description: error.message,
             status: 'error'
           });
@@ -103,8 +103,8 @@ const NFT = () => {
         <Table size="sm" variant="simple">
           <Thead>
             <Tr>
-              <Th>Atributo</Th>
-              <Th>Valor</Th>
+              <Th>Attribute</Th>
+              <Th>Value</Th>
             </Tr>
           </Thead>
           <Tbody>

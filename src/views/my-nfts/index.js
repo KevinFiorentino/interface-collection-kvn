@@ -1,5 +1,5 @@
 import { useWeb3React } from "@web3-react/core";
-import { Grid } from "@chakra-ui/react";
+import { Grid, Heading } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import NFTCard from "../../components/nft-card";
 import Loading from "../../components/loading";
@@ -14,6 +14,7 @@ const MyNFTs = () => {
 
   return (
     <>
+      <Heading color="blue.500" mb="3">My NFTs</Heading>
       {loading ? (
         <Loading />
       ) : (

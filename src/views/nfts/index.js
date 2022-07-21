@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
-import { Grid, InputGroup, InputLeftElement, Input, InputRightElement, Button, FormHelperText, FormControl } from "@chakra-ui/react";
+import { Grid, InputGroup, InputLeftElement, Input, InputRightElement, Button, FormHelperText, FormControl, Heading } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { Link } from 'react-router-dom';
 import NFTCard from "../../components/nft-card";
@@ -45,6 +45,7 @@ const NFTs = () => {
 
   return (
     <>
+      <Heading color="blue.500" mb="3">Galery</Heading>
       <form onSubmit={submit}>
         <FormControl>
           <InputGroup mb={3}>
@@ -56,16 +57,16 @@ const NFTs = () => {
               isInvalid={false}
               value={address ?? ""}
               onChange={handleAddressChange}
-              placeholder="Buscar por dirección"
+              placeholder="Search by address"
             />
             <InputRightElement width="5.5rem">
               <Button type="submit" h="1.75rem" size="sm">
-                Buscar
+                Search
               </Button>
             </InputRightElement>
           </InputGroup>
           {submitted && !validAddress && (
-            <FormHelperText>Dirección inválida</FormHelperText>
+            <FormHelperText color="red" mb="2">Invalid address</FormHelperText>
           )}
         </FormControl>
       </form>

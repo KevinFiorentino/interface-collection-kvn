@@ -10,6 +10,7 @@ const WalletData = () => {
 
   const [balance, setBalance] = useState(0);
   const { active, activate, deactivate, account, error, library } = useWeb3React();
+  const truncatedAddress = useTruncatedAddress(account);
 
   const isUnsupportedChain = error instanceof UnsupportedChainIdError;
 
@@ -35,8 +36,6 @@ const WalletData = () => {
   useEffect(() => {
     if (localStorage.getItem("previouslyConnected") === "true") connect();
   }, [connect]);
-
-  const truncatedAddress = useTruncatedAddress(account);
 
   return (
     <Flex alignItems={"center"}>
@@ -67,7 +66,7 @@ const WalletData = () => {
           onClick={connect}
           disabled={isUnsupportedChain}
         >
-          {isUnsupportedChain ? "Red no soportada" : "Conectar wallet"}
+          {isUnsupportedChain ? "Network not supported" : "Connect wallet"}
         </Button>
       )}
     </Flex>

@@ -10,7 +10,7 @@ function App() {
     <MainLayout>
       <Routes>
         <Route path="/" exact element={<Home/>} />
-        <Route path="/my-nfts" exact element={<MyNFTs/>} />
+        <Route path="/my-nfts" exact element={<MyNFTs/>} activeClassName="red" />
         <Route path="/nfts" exact element={<NFTs/>} />
         <Route path="/nfts/:tokenId" exact element={<NFT/>} />
       </Routes>

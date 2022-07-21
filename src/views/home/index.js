@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 import { useCallback, useEffect, useState } from "react";
 import useCollectionKVN from "../../hooks/useCollectionKVN";
+import useTruncatedAddress from "../../hooks/useTruncatedAddress";
 
 const Home = () => {
 
   const { active, account } = useWeb3React();
+  const truncatedAddress = useTruncatedAddress(account);
   const toast = useToast();
 
   const [maxSupply, setMaxSupply] = useState();
@@ -73,16 +75,16 @@ const Home = () => {
       })
       .on('transactionHash', (txHash) => {
         toast({
-          title: 'Transacción enviada',
-          description: `Hash de la transacción: ${txHash}`,
+          title: 'Transaction sent',
+          description: `Transaction hash: ${txHash}`,
           status: 'info'
         });
       })
       .on('receipt', () => {
         setIsMinting(false);
         toast({
-          title: 'Transacción confirmada',
-          description: 'La transacción se confirmó con éxito',
+          title: 'Transaction confirmed',
+          description: 'The transaction was successful',
           status: 'success'
         });
         getTotalSupply();
@@ -90,7 +92,7 @@ const Home = () => {
       .on('error', (error) => {
         setIsMinting(false);
         toast({
-          title: 'Error en la transacción',
+          title: 'Transaction error',
           description: error.message,
           status: 'error'
         });
@@ -158,7 +160,7 @@ const Home = () => {
             onClick={mint}
             isLoading={isMinting}
           >
-            Obtén tu punk
+            Get NFT
           </Button>
           <Link to="/nfts">
             <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
@@ -188,21 +190,21 @@ const Home = () => {
               <Badge ml={2}>
                 Address:
                 <Badge ml={1} colorScheme="blue">
-                  0x0000...0000
+                  {truncatedAddress}
                 </Badge>
               </Badge>
             </Flex>
-            <Button
+            {/* <Button
               onClick={getCollectionKVNData}
               mt={4}
               size="xs"
               colorScheme="blue"
             >
-              Actualizar
-            </Button>
+              Refresh
+            </Button> */}
           </>
         ) : (
-          <Badge mt={2}>Wallet desconectado</Badge>
+          <Badge mt={2}>Wallet disconnected</Badge>
         )}
       </Flex>
     </Stack>
