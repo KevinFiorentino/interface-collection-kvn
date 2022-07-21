@@ -131,10 +131,13 @@ const Home = () => {
           </Text>
           <br />
           <Text as={"span"} color={"blue.400"}>
-            nunca para de aprender
+            an NFT test platform
           </Text>
         </Heading>
         <Text color={"gray.500"}>
+          {/* CollectionKVN is a test platform working with Rinkeby network to generate NFTs ERC721. */}
+
+
           Platzi Punks es una colección de Avatares randomizados cuya metadata
           es almacenada on-chain. Poseen características únicas y sólo hay 100
           en existencia.

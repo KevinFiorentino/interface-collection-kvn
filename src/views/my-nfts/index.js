@@ -4,13 +4,30 @@ import { Link } from 'react-router-dom';
 import NFTCard from "../../components/nft-card";
 import Loading from "../../components/loading";
 import RequestAccess from "../../components/request-access";
+import WithoutNFTs from "../../components/without-nfts";
 import { useCollectionKVNsMyData } from "../../hooks/useCollectionKVNData";
 
 const MyNFTs = () => {
   const { active } = useWeb3React();
   const { nfts, loading } = useCollectionKVNsMyData();
 
-  if (!active) return <RequestAccess />;
+  if (!active) {
+    return (
+      <>
+        <Heading color="blue.500" mb="3">My NFTs</Heading>
+        <RequestAccess />
+      </>
+    );
+  }
+
+  if (nfts.length === 0) {
+    return (
+      <>
+        <Heading color="blue.500" mb="3">My NFTs</Heading>
+        <WithoutNFTs />
+      </>
+    );
+  }
 
   return (
     <>
