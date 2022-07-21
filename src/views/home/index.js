@@ -121,14 +121,14 @@ const Home = () => {
               position: "absolute",
               bottom: 1,
               left: 0,
-              bg: "green.400",
+              bg: "blue.400",
               zIndex: -1,
             }}
           >
-            Un Platzi Punk
+            Collection KVN
           </Text>
           <br />
-          <Text as={"span"} color={"green.400"}>
+          <Text as={"span"} color={"blue.400"}>
             nunca para de aprender
           </Text>
         </Heading>
@@ -137,7 +137,7 @@ const Home = () => {
           es almacenada on-chain. Poseen características únicas y sólo hay 100
           en existencia.
         </Text>
-        <Text color={"green.500"}>
+        <Text color={"blue.500"}>
           Cada Platzi Punk se genera de forma secuencial basado en tu address,
           usa el previsualizador para averiguar cuál sería tu Platzi Punk si
           minteas en este momento
@@ -151,9 +151,9 @@ const Home = () => {
             size={"lg"}
             fontWeight={"normal"}
             px={6}
-            colorScheme={"green"}
-            bg={"green.400"}
-            _hover={{ bg: "green.500" }}
+            colorScheme={"blue"}
+            bg={"blue.400"}
+            _hover={{ bg: "blue.500" }}
             disabled={!collectionKVN}
             onClick={mint}
             isLoading={isMinting}
@@ -181,13 +181,13 @@ const Home = () => {
             <Flex mt={2}>
               <Badge>
                 Next ID:
-                <Badge ml={1} colorScheme="green">
+                <Badge ml={1} colorScheme="blue">
                   {totalSupply}/{maxSupply}
                 </Badge>
               </Badge>
               <Badge ml={2}>
                 Address:
-                <Badge ml={1} colorScheme="green">
+                <Badge ml={1} colorScheme="blue">
                   0x0000...0000
                 </Badge>
               </Badge>
@@ -196,7 +196,7 @@ const Home = () => {
               onClick={getCollectionKVNData}
               mt={4}
               size="xs"
-              colorScheme="green"
+              colorScheme="blue"
             >
               Actualizar
             </Button>

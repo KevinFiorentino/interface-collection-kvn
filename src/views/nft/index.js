@@ -81,7 +81,7 @@ const NFT = () => {
           name={nft.name}
           image={nft.image}
         />
-        <Button onClick={transfer} disabled={account !== nft.owner} colorScheme="green" isLoading={transfering}>
+        <Button onClick={transfer} disabled={account !== nft.owner} colorScheme="blue" isLoading={transfering}>
           {account !== nft.owner ? "No eres el dueño" : "Transferir"}
         </Button>
       </Stack>
@@ -90,13 +90,13 @@ const NFT = () => {
         <Text fontSize="xl">{nft.description}</Text>
         <Text fontWeight={600}>
           DNA:
-          <Tag ml={2} colorScheme="green">
+          <Tag ml={2} colorScheme="blue">
             {nft.dna}
           </Tag>
         </Text>
         <Text fontWeight={600}>
           Owner:
-          <Tag ml={2} colorScheme="green">
+          <Tag ml={2} colorScheme="blue">
             {nft.owner}
           </Tag>
         </Text>
