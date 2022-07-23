@@ -1,11 +1,10 @@
-import { Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
+import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 
 const RequestAccess = () => {
   return (
     <Alert status="info">
       <AlertIcon />
-      <AlertTitle mr={2}>Connect your wallet</AlertTitle>
-      <AlertDescription>to see all NFTs.</AlertDescription>
+      <AlertTitle mr={2}>Connect your  Metamask Wallet to see all NFTs.</AlertTitle>
     </Alert>
   );
 };
