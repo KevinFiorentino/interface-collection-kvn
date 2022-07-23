@@ -1,6 +1,9 @@
 import { Box, Container, Stack, Text, Link, useColorModeValue } from "@chakra-ui/react";
 
 const Footer = () => {
+
+  const style = { textDecoration: 'underline' };
+
   return (
     <Box
       bg={useColorModeValue("white", "gray.800")}
@@ -21,10 +24,8 @@ const Footer = () => {
           align={{ base: "center", md: "center" }}
         >
           <Text>
-            © {new Date().getFullYear()} Original designs by
-            <Link ml={1} href="https://twitter.com/pablostanley">
-              Pablo Stanley 🎨
-            </Link>
+            © 2022 Developed by
+            <Link ml={1} href="https://www.linkedin.com/in/kevinfiorentino/" target="_blank" title="LinkedIn Kevin Fiorentino" rel="noopener noreferrer" style={style}>Kevin Fiorentino</Link> —△🌈
           </Text>
         </Container>
       </Box>

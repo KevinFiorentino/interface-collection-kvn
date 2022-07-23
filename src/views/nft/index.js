@@ -66,6 +66,12 @@ const NFT = () => {
 
   if (loading) return <Loading />;
 
+  const ellipsis = {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden'
+  };
+
   return (
     <Stack
       spacing={{ base: 8, md: 10 }}
@@ -82,7 +88,7 @@ const NFT = () => {
           image={nft.image}
         />
         <Button onClick={transfer} disabled={account !== nft.owner} colorScheme="blue" isLoading={transfering}>
-          {account !== nft.owner ? "No eres el dueño" : "Transferir"}
+          {account !== nft.owner ? "You are not the owner" : "Transfer"}
         </Button>
       </Stack>
       <Stack width="100%" spacing={5}>
@@ -90,13 +96,13 @@ const NFT = () => {
         <Text fontSize="xl">{nft.description}</Text>
         <Text fontWeight={600}>
           DNA:
-          <Tag ml={2} colorScheme="blue">
+          <Tag ml={2} colorScheme="blue" style={ellipsis}>
             {nft.dna}
           </Tag>
         </Text>
         <Text fontWeight={600}>
           Owner:
-          <Tag ml={2} colorScheme="blue">
+          <Tag ml={2} colorScheme="blue" style={ellipsis}>
             {nft.owner}
           </Tag>
         </Text>

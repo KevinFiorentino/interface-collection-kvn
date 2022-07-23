@@ -99,6 +99,7 @@ const Home = () => {
       });
   };
 
+  const style = { textDecoration: 'underline' };
 
   return (
     <Stack
@@ -135,17 +136,12 @@ const Home = () => {
           </Text>
         </Heading>
         <Text color={"gray.500"}>
-          {/* CollectionKVN is a test platform working with Rinkeby network to generate NFTs ERC721. */}
-
-
-          Platzi Punks es una colección de Avatares randomizados cuya metadata
-          es almacenada on-chain. Poseen características únicas y sólo hay 100
-          en existencia.
+          CollectionKVN is a test platform working with <strong>Ethereum Rinkeby network</strong> to generate an ERC721 NFT collection. <br></br>
+          You can see the <a href="https://github.com/KevinFiorentino/contract-collection-kvn" target="_blank" title="ColletionKVN Smart Contract" style={style} rel="noopener noreferrer">Smart Contract</a> and the <a href="https://github.com/KevinFiorentino/interface-collection-kvn" target="_blank" title="ColletionKVN UI" style={style} rel="noreferrer">UI Code</a>, both open source.
         </Text>
         <Text color={"blue.500"}>
-          Cada Platzi Punk se genera de forma secuencial basado en tu address,
-          usa el previsualizador para averiguar cuál sería tu Platzi Punk si
-          minteas en este momento
+          Each NFT is generated sequentially based on your personal address and there will only be <strong>100</strong> of them.<br></br>
+          You can use the preview to see the next NFT you can get for free.
         </Text>
         <Stack
           spacing={{ base: 4, sm: 6 }}
@@ -167,7 +163,7 @@ const Home = () => {
           </Button>
           <Link to="/nfts">
             <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
-              Galería
+              Galery
             </Button>
           </Link>
         </Stack>

@@ -1,8 +1,9 @@
 import { useState } from "react";
+import './nfts.css';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 import { Grid, InputGroup, InputLeftElement, Input, InputRightElement, Button, FormHelperText, FormControl, Heading } from "@chakra-ui/react";
-import { /* ExternalLinkIcon, */ SearchIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, SearchIcon } from "@chakra-ui/icons";
 import { Link } from 'react-router-dom';
 import NFTCard from "../../components/nft-card";
 import Loading from "../../components/loading";
@@ -53,9 +54,11 @@ const NFTs = () => {
   return (
     <>
       <Heading color="blue.500" mb="3">Galery</Heading>
-      {/* <a variant='ghost' class="chakra-button" href="https://testnets.opensea.io/collection/collectionkvn" target="_blank">
-        See all in OpenSea <ExternalLinkIcon mx='2px' />
-      </a> */}
+      <div class="collection-wrapper">
+        <a className="collection-wrapper-btn" href="https://testnets.opensea.io/collection/collectionkvn" target="_blank" rel="noopener noreferrer">
+          See all in OpenSea <ExternalLinkIcon mb="1" />
+        </a>
+      </div>
       <form onSubmit={submit}>
         <FormControl>
           <InputGroup mb={3}>
