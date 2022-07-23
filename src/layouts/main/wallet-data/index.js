@@ -67,6 +67,7 @@ const WalletData = () => {
           disabled={isUnsupportedChain}
         >
           {isUnsupportedChain ? "Network not supported" : "Connect wallet"}
+          <img src='./metamask.png' alt="Metamask Icon" width="24" height="24" style={{ marginLeft: '5px' }}></img>
         </Button>
       )}
     </Flex>

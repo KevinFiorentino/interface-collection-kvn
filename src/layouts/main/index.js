@@ -70,8 +70,7 @@ const MainLayout = ({ children }) => {
           <HStack spacing={8} alignItems={"center"}>
             <Flex alignItems="center">
               <Heading size="md" color="#3182CE" mt={0.2} ml={1}>
-                {/* CollectionKVN */}
-                <img src="./logo-collection-kvn.png"></img>
+                <img src="./logo-collection-kvn.png" alt="CollectionKVN Logo"></img>
               </Heading>
             </Flex>
             <HStack
