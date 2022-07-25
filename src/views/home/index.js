@@ -140,7 +140,7 @@ const Home = () => {
           You can see the <a href="https://github.com/KevinFiorentino/contract-collection-kvn" target="_blank" title="ColletionKVN Smart Contract" style={style} rel="noopener noreferrer">Smart Contract</a> and the <a href="https://github.com/KevinFiorentino/interface-collection-kvn" target="_blank" title="ColletionKVN UI" style={style} rel="noreferrer">UI Code</a>, both open source.
         </Text>
         <Text color={"blue.500"}>
-          Each NFT is generated sequentially based on your personal <strong>Metamask wallet address</strong> and there will only be <strong>100</strong> of them.<br></br>
+          Each NFT is generated sequentially based on your personal <strong>wallet address</strong> and there will only be <strong>100</strong> of them.<br></br>
           You can use the preview to see the next NFT you can get for free.
         </Text>
         <Stack

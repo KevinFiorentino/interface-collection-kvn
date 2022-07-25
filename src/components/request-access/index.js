@@ -4,7 +4,7 @@ const RequestAccess = () => {
   return (
     <Alert status="info">
       <AlertIcon />
-      <AlertTitle mr={2}>Connect your  Metamask Wallet to see all NFTs.</AlertTitle>
+      <AlertTitle mr={2}>Connect your wallet to see all NFTs.</AlertTitle>
     </Alert>
   );
 };

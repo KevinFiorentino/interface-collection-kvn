@@ -27,6 +27,10 @@
     "web3": "^1.7.4",
     "web3-react": "^5.0.5"
   },
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
