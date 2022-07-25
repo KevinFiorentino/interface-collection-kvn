@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import useCollectionKVN from "../useCollectionKVN";
 
+// GET NFT's ATTRIBUTES
 const getNFTData = async ({ collectionKVN, tokenId }) => {
   const [
     tokenURI,
@@ -66,6 +67,7 @@ const getNFTData = async ({ collectionKVN, tokenId }) => {
   };
 };
 
+
 // GET ALL NFTs
 const useCollectionKVNsData = ({ owner = null } = {}) => {
   const [nfts, setNFTs] = useState([]);
@@ -118,7 +120,7 @@ const useCollectionKVNsData = ({ owner = null } = {}) => {
 // GET MY NFTs
 const useCollectionKVNsMyData = () => {
   const [nfts, setNFTs] = useState([]);
-  const { account, /* library */ } = useWeb3React();
+  const { account } = useWeb3React();
   const [loading, setLoading] = useState(true);
   const collectionKVN = useCollectionKVN();
 
@@ -147,7 +149,7 @@ const useCollectionKVNsMyData = () => {
       setNFTs(nfts);
       setLoading(false);
     }
-  }, [collectionKVN, account, /* library?.utils */]);
+  }, [collectionKVN, account]);
 
   useEffect(() => {
     updateNFTs();

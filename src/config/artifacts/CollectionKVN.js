@@ -1,3 +1,5 @@
+// https://github.com/KevinFiorentino/contract-collection-kvn
+// https://rinkeby.etherscan.io/address/0x5eb362dDF7737F111FEC978019205AE7359427A9
 const CollectionKVNArtifact = {
   address: {
     4: "0x5eb362dDF7737F111FEC978019205AE7359427A9"

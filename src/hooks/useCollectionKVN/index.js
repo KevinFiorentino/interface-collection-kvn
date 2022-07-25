@@ -4,6 +4,7 @@ import collectionKVN from "../../config/artifacts/CollectionKVN";
 
 const { address, abi } = collectionKVN;
 
+// INSTANCIATE SMART CONTRACT
 const useCollectionKVN = () => {
   const { active, library, chainId } = useWeb3React();
 

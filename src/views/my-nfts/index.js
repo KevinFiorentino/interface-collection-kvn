@@ -20,7 +20,7 @@ const MyNFTs = () => {
     );
   }
 
-  if (nfts.length === 0) {
+  if (!loading && nfts.length === 0) {
     return (
       <>
         <Heading color="blue.500" mb="3">My NFTs</Heading>
