@@ -1,0 +1,71 @@
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 52.201.118.67:5001...
+* TCP_NODELAY set
+* Connected to ipfs.infura.io (52.201.118.67) port 5001 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*   CAfile: /etc/ssl/certs/ca-certificates.crt
+  CApath: /etc/ssl/certs
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN, server did not agree to a protocol
+* Server certificate:
+*  subject: CN=ipfs.infura.io
+*  start date: Jun 14 00:00:00 2022 GMT
+*  expire date: Jul 13 23:59:59 2023 GMT
+*  subjectAltName: host "ipfs.infura.io" matched cert's "ipfs.infura.io"
+*  issuer: C=US; O=Amazon; OU=Server CA 1B; CN=Amazon
+*  SSL certificate verify ok.
+> POST /api/v0/add?pin=true&recursive=true&wrap-with-directory=true&cid-version=1 HTTP/1.1
+> Host: ipfs.infura.io:5001
+> User-Agent: curl/7.68.0
+> Accept: */*
+> Content-Length: 8850227
+> Content-Type: multipart/form-data; boundary=------------------------cbf7c8b715e3c927
+> Expect: 100-continue
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 100 Continue
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Access-Control-Allow-Headers: X-Stream-Output, X-Chunked-Output, X-Content-Length
+< Access-Control-Expose-Headers: X-Stream-Output, X-Chunked-Output, X-Content-Length
+< Connection: close
+< Content-Type: application/json
+< Date: Mon, 25 Jul 2022 19:11:12 GMT
+< Server: go-ipfs/0.11.0
+< Trailer: X-Stream-Error
+< Vary: Origin
+< Vary: Origin
+< X-Chunked-Output: 1
+< X-Robots-Tag: noindex
+< Transfer-Encoding: chunked
+<
+{"Name":"asset-manifest.json","Hash":"bafkreicmw2ybg2px4ff2xecjykhawa6tacmbsh5zvw6cgj7ybslebgcdqq","Size":"369"}
+{"Name":"favicon.ico","Hash":"bafkreiaa6tku5unl4bky5yqlv5ga5evl5rxcwatj4b3blytpbnxslojq3u","Size":"42398"}
+{"Name":"index.html","Hash":"bafkreihlsvveli4n2wfbvr5yiayl5ctrboaz7gbrx5ejriftdg4wtl4jai","Size":"685"}
+{"Name":"logo-collection-kvn.png","Hash":"bafkreic4fvbxcfpmuqrdnbffb6c5da7ya7ftugby4xkbxpdiccbgaif3ve","Size":"5377"}
+{"Name":"manifest.json","Hash":"bafkreichmawgdlc5wvfdolbbw74qxfio34pt2dlzqfdo5lwczlu2migeea","Size":"316"}
+{"Name":"metamask.png","Hash":"bafkreidcgz6zmd3ie6ubnospnggazkrphjfum4uyr3n3eeltko367reneq","Size":"114217"}
+{"Name":"robots.txt","Hash":"bafkreieq2jf4hp3jrla6c43tsubctdgmu4vn6h2wj6vql5eexdci2hfn2i","Size":"67"}
+{"Name":"static/css/main.5eb4d45d.css","Hash":"bafkreidrdbcxonwbjoq3qxurmptet75dmtlw7ji4tbho6b4wvgsycugmrq","Size":"327"}
+{"Name":"static/css/main.5eb4d45d.css.map","Hash":"bafkreifsbgzguszhhlntqlf3l2mx3ikjikt7yxbzvsbutfbx3vvzp3olxe","Size":"649"}
+{"Name":"static/js/main.1dca7e02.js","Hash":"bafybeiamig7bc3rpxehvasvfxiy2sridhlct4fqtnbxvtowcqhfpkemv6a","Size":"2021098"}
+{"Name":"static/js/main.1dca7e02.js.LICENSE.txt","Hash":"bafkreie2ijmkarzvcponwebwmcwxri2u2kvmb44mzj25q37cooow42gmti","Size":"3151"}
+* We are completely uploaded and fine
+{"Name":"static/js/main.1dca7e02.js.map","Hash":"bafybeihlp7dtcfwq6eppsghhxdn3uiyrgabmwxbywlk3pllx3fc62qxc54","Size":"6661301"}
+{"Name":"static/css","Hash":"bafybeicmz5nffm62nuz6wd6d2zousegtfoxltpobcixsbhszgxaafcrt4e","Size":"1108"}
+{"Name":"static/js","Hash":"bafybeifcnqkipelqassbizj2epudlyxvtyq55smtycnrwinvotmw6adiey","Size":"8685756"}
+{"Name":"static","Hash":"bafybeifrffoplkkdskffgekmo6rn2dsmwm4el7vetjkslyobvkttzirmai","Size":"8686965"}
+{"Name":"","Hash":"bafybeidnakfwvqpncq4a5n7bchri3dbuplosmel3bujtwpewfrmidanb4q","Size":"8850865"}
+* Closing connection 0
+* TLSv1.2 (OUT), TLS alert, close notify (256):
